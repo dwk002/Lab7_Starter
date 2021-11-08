@@ -59,6 +59,21 @@ function initializeServiceWorker() {
    *  TODO - Part 2 Step 1
    *  Initialize the service worker set up in sw.js
    */
+  //REGISTER!
+  //Code from Intro to Service Workers!
+  if ('serviceWorker' in navigator) {
+    //Page loaded 
+    window.addEventListener('load', function() {
+      //Register the Service Worker! (Note: the browser will figure out if the service worker is already registered or not and handle it accordingly.)
+      navigator.serviceWorker.register('/sw.js').then(function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
 }
 
 /**
