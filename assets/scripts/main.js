@@ -65,7 +65,7 @@ function initializeServiceWorker() {
     //Page loaded 
     window.addEventListener('load', function() {
       //Register the Service Worker! (Note: the browser will figure out if the service worker is already registered or not and handle it accordingly.)
-      navigator.serviceWorker.register('sw.js').then(function(registration) {
+      navigator.serviceWorker.register('./sw.js').then(function(registration) {
         // Registration was successful
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
       }, function(err) {

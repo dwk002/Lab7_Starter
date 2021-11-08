@@ -2,7 +2,7 @@
 //         so do not move it next to the other scripts
 
 const CACHE_NAME = 'lab-7-starter';
-var urlsToCache = [
+const urlsToCache = [
   'https://introweb.tech/assets/json/ghostCookies.json',
   'https://introweb.tech/assets/json/birthdayCake.json',
   'https://introweb.tech/assets/json/chocolateChip.json',
