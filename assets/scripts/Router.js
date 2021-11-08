@@ -38,6 +38,7 @@ export class Router {
      * router instance using the 'this' keyword. Substitute 'home' for the variable
      * page
      */
+    this[page] = pageFunc;
   }
 
   /**
@@ -65,5 +66,24 @@ export class Router {
      *     and URL + hash to history
      *  4. Finally, call the stored function for the given page
      */
+    //1. Check if function exists
+    if (typeof this[page] != "function") {
+      throw new Error('no function for this page');
+    } 
+    //2. Create hash variable
+    let hash;
+    if(page == 'home'){
+      hash = '';
+    } else {
+      hash = '#' + page;
+    }
+    //console.log('hash: ' + hash);
+    //3 check is if it wasn't called from 'popstate'
+    if(!statePopped && window.location.hash != hash){
+        history.pushState({'page': page}, "", window.location.origin + hash);
+        //console.log('not back/foward button, made ' + window.location.origin + hash);
+    }
+    //4. Call stored function for given page
+    this[page]();
   }
 }
