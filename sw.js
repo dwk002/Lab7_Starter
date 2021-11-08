@@ -36,6 +36,7 @@ self.addEventListener('activate', function (event) {
    * TODO - Part 2 Step 3
    * Create a function as outlined above, it should be one line
    */
+   console.log('EventListener: activate');
    event.waitUntil(clients.claim());
    
 });
@@ -47,17 +48,21 @@ self.addEventListener('fetch', function (event) {
    * Create a function as outlined above
    */
   //From Google Tutorial
+  console.log('EventListener: fetch outside');
    event.respondWith(
      
     caches.match(event.request)
       .then(function(response) {
         // Cache hit - return response
         if (response) {
+          console.log('EventListener: fetch inside: Cache Hit');
           return response;
+          
         }
 
         return fetch(event.request).then(
           function(response) {
+            console.log('EventListener: fetch inside: Cache Miss');
             // Check if we received a valid response
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;

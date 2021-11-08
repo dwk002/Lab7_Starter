@@ -80,7 +80,7 @@ export class Router {
     //console.log('hash: ' + hash);
     //3 check is if it wasn't called from 'popstate'
     if(!statePopped && window.location.hash != hash){
-        history.pushState({'page': page}, "", window.location.origin + hash);
+        history.pushState({'page': page}, "", window.location + hash);
         //console.log('not back/foward button, made ' + window.location.origin + hash);
     }
     //4. Call stored function for given page
